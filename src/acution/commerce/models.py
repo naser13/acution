@@ -1,4 +1,3 @@
-__author__ = 'naser'
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -7,6 +6,7 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
 
 class Good(models.Model):
     CATEGORIES = (
@@ -26,11 +26,13 @@ class Good(models.Model):
         return self.title
 
 
+
 class Price(models.Model):
     good = models.ForeignKey(Good)
     user = models.ForeignKey(User)
     amount = models.IntegerField()
-    date = models.DateTimeField()
+    date = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return self.amount
@@ -42,9 +44,9 @@ class Picture(models.Model):
 
 
 class Notification(models.Model):
-    good = models.ForeignKey(Good)
+    good = models.ForeignKey(Price)
     user = models.ForeignKey(User)
-    date_time = models.DateTimeField();
+    date_time = models.DateTimeField(auto_now_add=True)    date_time = models.DateTimeField();
 
     def __str__(self):
         return self.date_time

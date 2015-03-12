@@ -6,5 +6,9 @@
 </head>
 <body>
     سلام
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+</form>
 </body>
 </html>

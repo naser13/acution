@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from acution.commerce.forms import MemberForm
 
 
 def home(request):
-    return render(request, 'base.html')
+    form = MemberForm()
+    return render(request, 'base.html', {'form': form})

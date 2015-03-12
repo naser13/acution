@@ -1,19 +1,29 @@
-
 __author__ = 'naser'
 from django.db import models
+
+
 class User(models.Model):
     fullname = models.CharField(max_length=100)
-    phone=models.CharField(max_length=20)
+    phone = models.CharField(max_length=20)
     email = models.EmailField()
     username = models.CharField(max_length=100)
     password = models.CharField(max_length=20)
 
+
 class Good(models.Model):
+    CATEGORIES = (
+        ('car', 'خودرو'),
+        ('elc', 'وسایل الکترونیکی'),
+        ('hos', 'لوازم خانگی'),
+    )
+
     owner = models.ForeignKey(User)
     owner_price = models.ForeignKey(Price)
     city = models.CharField(max_length=20)
     comments = models.TextField()
     title = models.CharField(max_length=30)
+    category = models.CharField(choices=CATEGORIES)
+
 
 class Price(models.Model):
     good = models.ForeignKey(Good)
@@ -21,9 +31,11 @@ class Price(models.Model):
     amount = models.IntegerField()
     date = models.DateTimeField()
 
+
 class Picture(models.Model):
     good = models.ForeignKey(Good)
     link = models.CharField(max_length=100)
+
 
 class Notification(models.Model):
     good = models.ForeignKey(Good)

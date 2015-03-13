@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Member(User):
-    phone = models.CharField(max_length=20)
+    phone = models.CharField(max_length=20,verbose_name='تلفن')
 
     class Meta:
         verbose_name = 'کاربر'
@@ -21,11 +21,11 @@ class Good(models.Model):
     )
 
     owner = models.ForeignKey(Member)
-    owner_price = models.IntegerField()
-    city = models.CharField(max_length=20)
-    comments = models.TextField()
-    title = models.CharField(max_length=30)
-    category = models.CharField(choices=CATEGORIES, max_length=3)
+    owner_price = models.IntegerField(verbose_name='قیمت اولیه')
+    city = models.CharField(max_length=20,verbose_name='شهر')
+    comments = models.TextField(verbose_name='توضیحات')
+    title = models.CharField(max_length=30,verbose_name='عنوان')
+    category = models.CharField(choices=CATEGORIES, max_length=3,verbose_name='دسته بندی')
 
     def __str__(self):
         return self.title

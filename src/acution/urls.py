@@ -5,6 +5,16 @@ from acution.commerce.urls import urlpatterns
 urlpatterns = patterns('',
                        url(r'^$', include(urlpatterns)),
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^login/','acution.commerce.views.login'),
-                       url(r'^get/','acution.commerce.views.addGood')
+)
+
+urlpatterns += patterns(
+    'django.contrib.auth.views',
+
+    url(r'^login/$', 'login',
+        {'template_name': 'login.html'},
+        name='login'),
+
+    url(r'^logout/$', 'logout',
+        {'next_page': 'home'},
+        name='logout'),
 )

@@ -73,5 +73,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "../static"),)
+MEDIA_ROOT = os.path.join(BASE_DIR, "../media")
+STATIC_ROOT = os.path.join(BASE_DIR, "../static")
+STATICFILES_DIRS = (STATIC_ROOT,)
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, "../templates"),)
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'home'

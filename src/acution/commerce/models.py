@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 
 class Member(User):
@@ -43,7 +44,7 @@ class Price(models.Model):
 
 class Picture(models.Model):
     good = models.ForeignKey(Good)
-    # image = models.ImageField()
+    image = models.FileField(upload_to=settings.MEDIA_ROOT)
 
 
 class Notification(models.Model):

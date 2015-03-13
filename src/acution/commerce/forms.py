@@ -56,7 +56,3 @@ class AddGoodForm(forms.ModelForm):
             raise forms.validationError('نمیتواند خالی باشد')
         return comment
 
-class PriceForm(forms.ModelForm):
-    class Meta:
-        model = Price
-        fields = ['amount']

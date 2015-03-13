@@ -1,7 +1,7 @@
-from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from acution.commerce.forms import MemberForm,AddGoodForm
-from acution.commerce.models import *
+from acution.commerce.forms import MemberForm, AddGoodForm
+
 
 def home(request):
     if request.method == 'POST':
@@ -13,18 +13,15 @@ def home(request):
         form = MemberForm()
     return render(request, 'base.html', {'form': form})
 
-def get(request):
-    user = Member.objects.get(first_name='ansari')
-    # price = Good.objects.all()
-    g = Good.objects.get(owner = user)
-    return HttpResponse(g)
 
-def addGood(request):
-    if request.method =='POST':
+def add_good(request):
+    if request.method == 'POST':
         form = AddGoodForm(request.POST)
         if form.is_valid():
-            form.save()
+            good = form.save(commit=False)
+            good.owner = request.user
+            good.save()
             return redirect('home')
     else:
         form = AddGoodForm()
-    return render(request,'addGood.html',{'form' : form})
+    return render(request, 'addGood.html', {'form': form})

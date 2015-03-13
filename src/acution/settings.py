@@ -27,7 +27,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'acution.commerce',
+    'src.acution.commerce',
     'crispy_forms',
 )
 
@@ -41,9 +41,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'acution.urls'
+ROOT_URLCONF = 'src.acution.urls'
 
-WSGI_APPLICATION = 'acution.wsgi.application'
+WSGI_APPLICATION = 'src.acution.wsgi.application'
 
 
 # Database
@@ -83,3 +83,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap3'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 LOGIN_REDIRECT_URL = 'home'
+
+
+# authentication settings
+AUTH_USER_MODEL = 'commerce.Member'

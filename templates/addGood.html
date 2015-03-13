@@ -1,0 +1,15 @@
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>درج کالا</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit">sub</button>
+    </form>
+</body>
+</html>

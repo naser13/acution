@@ -5,6 +5,8 @@ from acution.commerce.urls import urlpatterns
 urlpatterns = patterns('',
                        url(r'^$', include(urlpatterns)),
                        url(r'^admin/', include(admin.site.urls)),
+                       url(r'^get/','acution.commerce.views.get'),
+                       url(r'^add/','acution.commerce.views.addGood'),
 )
 
 urlpatterns += patterns(
@@ -17,4 +19,5 @@ urlpatterns += patterns(
     url(r'^logout/$', 'logout',
         {'next_page': 'home'},
         name='logout'),
+
 )

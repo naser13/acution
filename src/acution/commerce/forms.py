@@ -66,15 +66,21 @@ class AddGoodForm(forms.ModelForm):
         model = Good
         fields = ['title', 'description', 'category']
 
-    def clean_title(self):
-        title = self.clean_data['title']
-        if len(title) < 1:
-            raise forms.ValidationError("نمیتواند خالی باشد")
-        return title
+    # def clean_title(self):
+    #     title = self.clean_data['title']
+    #     if len(title) < 1:
+    #         raise forms.ValidationError("نمیتواند خالی باشد")
+    #     return title
+    #
+    # def clean_comments(self):
+    #     comment = self.clean_data['description']
+    #     if len(comment) < 1:
+    #         raise forms.ValidationError('نمیتواند خالی باشد')
+    #     return comment
 
-    def clean_comments(self):
-        comment = self.clean_data['comments']
-        if len(comment) < 1:
-            raise forms.ValidationError('نمیتواند خالی باشد')
-        return comment
 
+
+class PriceForm(forms.ModelForm):
+    class Meta:
+        model = Price
+        fields =['amount']

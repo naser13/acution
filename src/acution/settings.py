@@ -28,6 +28,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'acution.commerce',
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,6 +78,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "../media")
 STATIC_ROOT = os.path.join(BASE_DIR, "../static")
 STATICFILES_DIRS = (STATIC_ROOT,)
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, "../templates"),)
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'

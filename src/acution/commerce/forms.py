@@ -35,7 +35,13 @@ class AddGoodForm(forms.ModelForm):
         fields = ['title', 'description', 'category', 'city', 'owner_price']
 
 
+
 class PriceForm(forms.ModelForm):
     class Meta:
         model = Price
         fields = ['amount']
+
+class picture_form(forms.ModelForm):
+    class Meta:
+        model = Picture
+        fields = ['image']

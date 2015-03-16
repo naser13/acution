@@ -1,0 +1,20 @@
+<li class="sidebar-brand" style="right: 10; color: #ffffff"><span class="glyphicon glyphicon-user" style="margin-right: -25px "></span> {{ user.username }}</li>
+<li>
+    {% with 1 as n_size %}
+        {% if n_size == 0 %}
+             <button class="btn btn-primary" type="button" style=" margin-right: -20px;width: 250px">
+              <span class="glyphicon glyphicon-alert" style="padding-left: 10px;padding-right: 2px;float: right"></span><div style="float: right">گوش زد</div>
+            </button>
+        {% else %}
+            <button class="btn btn-danger" type="button" style=" margin-right: -20px;width: 250px">
+              <span class="glyphicon glyphicon-info-sign" style="padding-left: 10px;padding-right: 2px;float: right"></span><div style="float: right">گوش زد</div> <span class="badge" style="float: left">{{ n_size }}</span>
+            </button>
+        {% endif %}
+    {% endwith %}
+</li>
+<li>
+    <a href="logout"   style=" margin-right: -20px">
+              <span class="glyphicon glyphicon-log-out" style="top:11px;margin-right:13px;font-size: 16px;margin-left: -10px;float: right"></span>خروج
+    </a>
+</li>
+<li><a href="#">کالاهای برای فروش</a> </li>

@@ -1,8 +1,11 @@
 from django.conf.urls import patterns, include, url
+from django.conf.urls.static import static
 from django.contrib import admin
-from acution.commerce.urls import urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = patterns('',
+                       url(r'^add/$','acution.commerce.views.add_good'),
                        url(r'^login/$', 'django.contrib.auth.views.login',
                            {'template_name': 'login.html'},
                            name='login'),
@@ -11,6 +14,7 @@ urlpatterns = patterns('',
                            {'next_page': 'home'},
                            name='logout'),
                        url(r'^admin/', include(admin.site.urls)),
-                       url(r'^commerce/', include(urlpatterns)),
                        url(r'^$', 'acution.commerce.views.home', name='home'),
-    )
+                       url(r'^addgood/$','acution.commerce.views.add_good')
+    )+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+

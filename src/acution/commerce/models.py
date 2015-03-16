@@ -1,11 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
+from acution.commerce.data import Data
 
 
 class Member(AbstractUser):
     phone = models.CharField(max_length=20, verbose_name='تلفن')
-
     class Meta:
         verbose_name = 'کاربر'
         verbose_name_plural = 'کاربران'
@@ -13,14 +13,12 @@ class Member(AbstractUser):
     def __str__(self):
         return self.first_name + " " + self.last_name
 
-
 class Good(models.Model):
     CATEGORIES = (
-        ('car', 'خودرو'),
+        ('cth', 'پوشاک'),
         ('elc', 'وسایل الکترونیکی'),
         ('hos', 'لوازم خانگی'),
     )
-
     owner = models.ForeignKey(Member)
     owner_price = models.IntegerField(verbose_name='قیمت اولیه')
     city = models.CharField(max_length=20, verbose_name='شهر')

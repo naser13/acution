@@ -1,0 +1,37 @@
+<li class="sidebar-brand" >
+<a style="float: right" href="login">
+    <span class="glyphicon glyphicon-log-in" style="float: right;margin-right: -14px;top: 23px;margin-left: -12px"></span>ورود
+</a>
+</li>
+<li class="sidebar-brand">
+    <a style="float: right" href="#">
+         <span  style="float: right;margin-right: -14px;top: 23px;margin-left: -12px" class="glyphicon glyphicon-user"></span>
+        عضویت
+    </a>
+</li>
+<li class="sidebar-brand" style="color: #ffffff">
+    <a href="#" id="category">
+        <span id="drop" class="glyphicon glyphicon-chevron-down" style="margin-right: -33px;margin-left: 8px"></span> دسته بندی
+    </a>
+</li>
+<div id="cats" style="display: none;color: #ffffff" >
+{% for category in cat %}
+
+        <li>{{ category }}</li>
+
+{% endfor %}
+</div>
+<script>
+    dropdown = false;
+    $('#category').click(function(){
+        if(!dropdown){
+            dropdown = true
+            $('#drop').attr('class','glyphicon glyphicon-chevron-up')
+            $('#cats').css('display','block');
+        }else{
+            dropdown = false
+            $('#drop').attr('class','glyphicon glyphicon-chevron-down')
+            $('#cats').css('display','none');
+        }
+    });
+</script>

@@ -33,3 +33,8 @@ def add_good(request):
         form = AddGoodForm()
         pic_form = picture_form()
     return render(request, 'addGood.html', {'form': form,'pic_form':pic_form})
+
+def good(request):
+    good = Good.objects.get(id=11)
+    img = good.picture_set.all()
+    return render(request,'list_goods.html',{'img':img})

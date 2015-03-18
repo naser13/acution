@@ -15,6 +15,7 @@ urlpatterns = patterns('',
                            name='logout'),
                        url(r'^admin/', include(admin.site.urls)),
                        url(r'^$', 'acution.commerce.views.home', name='home'),
-                       url(r'^addgood/$','acution.commerce.views.add_good')
+                       url(r'^addgood/$','acution.commerce.views.add_good'),
+                       url(r'^goods/$','acution.commerce.views.good')
     )+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
 

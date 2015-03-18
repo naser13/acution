@@ -1,47 +1,20 @@
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 <!DOCTYPE html>
-<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap.js"></script>
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../static/css/simple-sidebar.css" rel="stylesheet">
 
-    {% block head %}
-        <head>
-            <script type="text/javascript" src="../static/js/jquery.js"></script>
-            <script src="../static/js/bootstrap.min.js"></script>
-            <script src="../static/js/bootstrap.js"></script>
-            <link rel="stylesheet" href="../static/css/bootstrap-theme.css">
-            <link rel="stylesheet" href="../static/css/bootstrap.css">
-            <link rel="stylesheet" href="../static/css/simple-sidebar.css">
-        </head>
+</head>
+{% include 'widg/navbar.html' %}
+<body style="padding-top: 50px">
+    {% block body %}
     {% endblock %}
-    {% block nav-bar %}
-        {% include 'widg/navbar.html' %}
-    {% endblock %}
-    <div class="container" style="position: absolute;top: 50px;">
-        {% block sidebar %}
-            <!-- Sidebar -->
-            <div id="wrapper">
-                <div id="sidebar-wrapper">
-                    <ul class="sidebar-nav" dir="rtl">
-                    {% block content %}
-                        {% if user.is_authenticated %}
-                            {% include 'widg/user_nav.html' with cat=categories %}
-                        {% else %}
-                            {% include 'widg/public_nav.html' with cat=categories %}
-                        {% endif %}
-                    {% endblock %}
-                    </ul>
-                </div>
-            </div>
-            <!-- /#sidebar-wrapper -->
-
-        {% endblock %}
-        {% block body %}
-        {% endblock %}
-    </div>
-    <script>
-        $(".navbar-toggle").click(function(e) {
-              e.preventDefault();
-              $("#wrapper").toggleClass("toggled");
-        });
-    </script>
+</body>
 </html>

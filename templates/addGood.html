@@ -8,6 +8,7 @@
 <body>
     <form action="/addgood/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {{ form|crispy }}
         {{ pic_form|crispy }}
         <button type="submit">sub</button>
     </form>

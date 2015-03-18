@@ -1,0 +1,20 @@
+            <div id="wrapper">
+                <div id="sidebar-wrapper">
+                    <ul class="sidebar-nav" dir="rtl">
+                    {% block content %}
+                        {% if user.is_authenticated %}
+                            {% include 'widg/user_nav.html' with cat=categories %}
+                        {% else %}
+                            {% include 'widg/public_nav.html' with cat=categories %}
+                        {% endif %}
+                    {% endblock %}
+                    </ul>
+                </div>
+            </div>
+            <!-- /#sidebar-wrapper -->
+            <script>
+                $(".navbar-toggle").click(function(e) {
+                      e.preventDefault();
+                      $("#wrapper").toggleClass("toggled");
+                });
+            </script>

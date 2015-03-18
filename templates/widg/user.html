@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body %}
+    {% include 'widg/side_bar.html' %}
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+        {% block content %}
+
+        {% endblock %}
+        </div>
+    </div>
+{% endblock %}

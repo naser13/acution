@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from acution.commerce.forms import *
 from acution.commerce.data import Data
@@ -13,7 +14,7 @@ def home(request):
     else:
         form = MemberForm()
 
-    return render(request, 'base.html', {'form': form,'categories':categories})
+    return render(request, 'widg/user.html', {'form': form,'categories':categories})
 
 @login_required(login_url='login')
 def add_good(request):
@@ -24,11 +25,16 @@ def add_good(request):
             good = form.save(commit=False)
             img = pic_form.save(commit=False)
             good.owner = request.user
-            img.good = good
-            img.save()
             good.save()
+            img.good = Good.objects.get(id=good.id)
+            img.save()
             return redirect('home')
     else:
         form = AddGoodForm()
         pic_form = picture_form()
     return render(request, 'addGood.html', {'form': form,'pic_form':pic_form})
+
+def good(request):
+    good = Good.objects.get(id=11)
+    img = good.picture_set.all()
+    return render(request,'list_goods.html',{'img':img})
